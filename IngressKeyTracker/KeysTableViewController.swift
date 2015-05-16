@@ -10,6 +10,7 @@ import UIKit
 
 class KeysTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate {
 
+    //For each portal, we need to store: name, picture, latitude, longitude, faction, hasKey, hasL8.
     var keys = ["USD - St Francis of Assisi Statue",
         "USD Reflecting Pool",
         "Institute of Peace and Justice",
@@ -109,9 +110,7 @@ class KeysTableViewController: UITableViewController, UITableViewDataSource, UIT
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-
         cell.textLabel?.text = keys[indexPath.row]
-
         return cell
     }
 
@@ -127,6 +126,12 @@ class KeysTableViewController: UITableViewController, UITableViewDataSource, UIT
             keys.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }   
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+        
     }
 
 }
