@@ -151,8 +151,13 @@ class KeysTableViewController: UITableViewController, UITableViewDataSource, UIT
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
-        haveKey[indexPath.row] = true
+        if cell?.accessoryType == UITableViewCellAccessoryType.Checkmark {
+            cell?.accessoryType = UITableViewCellAccessoryType.None
+            haveKey[indexPath.row] = false
+        } else {
+            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+            haveKey[indexPath.row] = true
+        }
         NSUserDefaults.standardUserDefaults().setObject(haveKey, forKey: "haveKey")
     }
 
