@@ -129,6 +129,7 @@ class KeysTableViewController: UITableViewController, UITableViewDataSource, UIT
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel?.text = keyNames[indexPath.row]
+        cell.accessoryType = UITableViewCellAccessoryType.None
         if haveKey[indexPath.row] == true {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
@@ -146,8 +147,9 @@ class KeysTableViewController: UITableViewController, UITableViewDataSource, UIT
             // Delete the row from the data source
             keyNames.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        }   
+        }
     }
+    
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
