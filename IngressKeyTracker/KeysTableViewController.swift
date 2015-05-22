@@ -16,6 +16,10 @@ class KeysTableViewController: UITableViewController, UITableViewDataSource, UIT
     
     var input = UITextField()
     
+    @IBAction func doHaveEights(sender: AnyObject) {
+        println("Pressed Have Eights");
+    }
+    
     @IBAction func addKey(sender: AnyObject) {
         var inputTextField: UITextField?
         let keyPrompt = UIAlertController(title: "Key Tracker", message: "Enter the Key Name: ", preferredStyle: UIAlertControllerStyle.Alert)
